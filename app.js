@@ -2,13 +2,13 @@
 import { makeStatsString } from './utils.js';
 import { makeTitleString } from './utils.js';
 
-let firstImage = document.getElementById('image-one');
-let secondImage = document.getElementById('image-two');
-let thirdImage = document.getElementById('image-three');
+let landImage = document.getElementById('image-one');
+let timeImage = document.getElementById('image-two');
+let peopleImage = document.getElementById('image-three');
 
-let firstDropdown = document.getElementById('selector-one');
-let secondDropdown = document.getElementById('selector-two');
-let thirdDropdown = document.getElementById('selector-three');
+let landDropdown = document.getElementById('land-selector');
+let timeDropdown = document.getElementById('time-selector');
+let peopleDropdown = document.getElementById('people-selector');
 
 let sloganInput = document.getElementById('slogan-input');
 let sloganHolder = document.getElementById('slogan-holder');
@@ -21,32 +21,32 @@ let titleButton = document.getElementById('title-button');
 
 // let state
 let sloganArray = [];
-let firstChanges = 0;
-let secondChanges = 0;
-let thirdChanges = 0;
+let landChanges = 0;
+let timeChanges = 0;
+let peopleChanges = 0;
 
 // set event listeners 
-firstDropdown.addEventListener('change', () => {
-    let firstValue = firstDropdown.value;
-    firstChanges++;
-    let firstPath = './assets/' + firstValue.toLowerCase() + '.png';
-    firstImage.src = firstPath;
+landDropdown.addEventListener('change', () => {
+    let landValue = landDropdown.value;
+    landChanges++;
+    let landPath = './assets/' + landValue.toLowerCase() + '.png';
+    landImage.src = landPath;
     displayCountStats();
 });
 
-secondDropdown.addEventListener('change', () => {
-    let secondValue = secondDropdown.value;
-    secondChanges++;
-    let secondPath = './assets/' + secondValue.toLowerCase() + '.png';
-    secondImage.src = secondPath;
+timeDropdown.addEventListener('change', () => {
+    let timeValue = timeDropdown.value;
+    timeChanges++;
+    let timePath = './assets/' + timeValue.toLowerCase() + '.png';
+    timeImage.src = timePath;
     displayCountStats();
 });
 
-thirdDropdown.addEventListener('change', () => {
-    let thirdValue = thirdDropdown.value;
-    thirdChanges++;
-    let thirdPath = './assets/' + thirdValue.toLowerCase() + '.png';
-    thirdImage.src = (thirdPath);
+peopleDropdown.addEventListener('change', () => {
+    let peopleValue = peopleDropdown.value;
+    peopleChanges++;
+    let peoplePath = './assets/' + peopleValue.toLowerCase() + '.png';
+    peopleImage.src = (peoplePath);
     displayCountStats();
 });
 
@@ -57,12 +57,12 @@ sloganButton.addEventListener('click', () => {
 });
 
 titleButton.addEventListener('click', () => {
-    let cityTitle = makeTitleString(nameInput.value, firstDropdown.value, secondDropdown.value, thirdDropdown.value);
+    let cityTitle = makeTitleString(nameInput.value, landDropdown.value, timeDropdown.value, peopleDropdown.value);
     fullTitle.innerText = cityTitle;
 });
 
 function displayCountStats() {
-    const statsString = makeStatsString(firstChanges, secondChanges, thirdChanges);
+    const statsString = makeStatsString(landChanges, timeChanges, peopleChanges);
     countsHolder.innerHTML = statsString;
 }
 function displaySlogans() {

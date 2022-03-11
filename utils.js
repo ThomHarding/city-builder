@@ -1,18 +1,5 @@
-export function makeStatsString(firstChanges, secondChanges, thirdChanges) {
-    if (firstChanges === 1) {
-        firstChanges += ' time';
-    } else {
-        firstChanges += ' times';
-    } if (secondChanges === 1) {
-        secondChanges += ' time';
-    } else {
-        secondChanges += ' times';
-    } if (thirdChanges === 1) {
-        thirdChanges += ' time';
-    } else {
-        thirdChanges += ' times';
-    }
-    return 'first changes: ' + firstChanges + ' second changes: ' + secondChanges + ' third changes: ' + thirdChanges;
+export function makeStatsString(landChanges, timeChanges, peopleChanges) {
+    return 'land changes: ' + landChanges + ' time changes: ' + timeChanges + ' people changes: ' + peopleChanges;
 }
 
 export function makeTitleString(name, land, time, people) {
