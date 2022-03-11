@@ -1,5 +1,6 @@
 // import functions and grab DOM elements
 import { makeStatsString } from './utils.js';
+import { makeTitleString } from './utils.js';
 
 let firstImage = document.getElementById('image-one');
 let secondImage = document.getElementById('image-two');
@@ -12,8 +13,11 @@ let thirdDropdown = document.getElementById('selector-three');
 let sloganInput = document.getElementById('slogan-input');
 let sloganHolder = document.getElementById('slogan-holder');
 let countsHolder = document.getElementById('counts-holder');
+let nameInput = document.getElementById('name-input');
+let fullTitle = document.getElementById('city-title-text');
 
 let sloganButton = document.getElementById('slogan-button');
+let titleButton = document.getElementById('title-button');
 
 // let state
 let sloganArray = [];
@@ -52,11 +56,15 @@ sloganButton.addEventListener('click', () => {
     displaySlogans();
 });
 
+titleButton.addEventListener('click', () => {
+    let cityTitle = makeTitleString(nameInput.value, firstDropdown.value, secondDropdown.value, thirdDropdown.value);
+    fullTitle.innerText = cityTitle;
+});
+
 function displayCountStats() {
     const statsString = makeStatsString(firstChanges, secondChanges, thirdChanges);
     countsHolder.innerHTML = statsString;
 }
-
 function displaySlogans() {
     sloganHolder.innerHTML = '';
     for (let slogan of sloganArray) {
