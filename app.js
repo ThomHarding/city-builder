@@ -13,6 +13,8 @@ let sloganInput = document.getElementById('slogan-input');
 let sloganHolder = document.getElementById('slogan-holder');
 let countsHolder = document.getElementById('counts-holder');
 
+let sloganButton = document.getElementById('slogan-button');
+
 // let state
 let sloganArray = [];
 let firstChanges = 0;
@@ -31,7 +33,8 @@ firstDropdown.addEventListener('change', () => {
 
 secondDropdown.addEventListener('change', () => {
     let secondValue = secondDropdown.value;
-    let secondPath = 'url(./assets/' + secondValue.toLowerCase() + 'png)';
+    secondChanges++;
+    let secondPath = 'url(./assets/' + secondValue.toLowerCase() + '.png)';
     secondImage.src = secondPath;
     displayCountStats();
 });
@@ -43,12 +46,13 @@ thirdDropdown.addEventListener('change', () => {
     let thirdPath = 'url(./assets/' + thirdValue.toLowerCase() + '.png)';
     thirdImage.src = (thirdPath);
     displayCountStats();
+});
+
+sloganButton.addEventListener('click', () => {
     let sloganToAdd = sloganInput.value;
     sloganArray.push(sloganToAdd);
     displaySlogans();
 });
-
-
 
 function displayCountStats() {
     const statsString = makeStatsString(firstChanges, secondChanges, thirdChanges);
@@ -58,7 +62,7 @@ function displayCountStats() {
 function displaySlogans() {
     sloganHolder.innerHTML = '';
     for (let slogan of sloganArray) {
-        let newSlogan = document.createElement('div');
+        let newSlogan = document.createElement('p');
         newSlogan.innerText = slogan;
         sloganHolder.appendChild(newSlogan);
     }
