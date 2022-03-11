@@ -25,25 +25,23 @@ let thirdChanges = 0;
 firstDropdown.addEventListener('change', () => {
     let firstValue = firstDropdown.value;
     firstChanges++;
-    let firstPath = 'url(./assets/' + firstValue.toLowerCase() + '.png)';
+    let firstPath = './assets/' + firstValue.toLowerCase() + '.png';
     firstImage.src = firstPath;
     displayCountStats();
 });
 
-
 secondDropdown.addEventListener('change', () => {
     let secondValue = secondDropdown.value;
     secondChanges++;
-    let secondPath = 'url(./assets/' + secondValue.toLowerCase() + '.png)';
+    let secondPath = './assets/' + secondValue.toLowerCase() + '.png';
     secondImage.src = secondPath;
     displayCountStats();
 });
 
-
 thirdDropdown.addEventListener('change', () => {
     let thirdValue = thirdDropdown.value;
     thirdChanges++;
-    let thirdPath = 'url(./assets/' + thirdValue.toLowerCase() + '.png)';
+    let thirdPath = './assets/' + thirdValue.toLowerCase() + '.png';
     thirdImage.src = (thirdPath);
     displayCountStats();
 });
