@@ -1,32 +1,65 @@
 // import functions and grab DOM elements
+import { makeStatsString } from './utils.js';
+
+let firstImage = document.getElementById('image-one');
+let secondImage = document.getElementById('image-two');
+let thirdImage = document.getElementById('image-three');
+
+let firstDropdown = document.getElementById('selector-one');
+let secondDropdown = document.getElementById('selector-two');
+let thirdDropdown = document.getElementById('selector-three');
+
+let sloganInput = document.getElementById('slogan-input');
+let sloganHolder = document.getElementById('slogan-holder');
+let countsHolder = document.getElementById('counts-holder');
 
 // let state
+let sloganArray = [];
+let firstChanges = 0;
+let secondChanges = 0;
+let thirdChanges = 0;
 
 // set event listeners 
-  // get user input
-  // use user input to update state 
-  // update DOM to reflect the new state
+firstDropdown.addEventListener('change', () => {
+    let firstValue = firstDropdown.value;
+    firstChanges++;
+    let firstPath = 'url(./assets/' + firstValue.toLowerCase() + '.png)';
+    firstImage.src = firstPath;
+    displayCountStats();
+});
 
-  //template for each dropdown:
-    //eventlistener for change
-      //get value of dropdown element
-      //change .src property of corresponding image; the first dropdown will alter imageOne etc
 
-      //count of that dropdown's changes will increment
-      //displayCountStats();
-      //grab slogan-input.value
-      //push to array of slogans
-      //displaySlogans();
+secondDropdown.addEventListener('change', () => {
+    let secondValue = secondDropdown.value;
+    let secondPath = 'url(./assets/' + secondValue.toLowerCase() + 'png)';
+    secondImage.src = secondPath;
+    displayCountStats();
+});
 
-//displayCountStats function {
-  //grabs counters for changes to all three dropdowns
-  //add to proper format of output
-  //add formatted output to counts-holder div
-//}
 
-//displaySlogans function {
-  //clear innerText of slogan-holder div
-  //for each slogan in array of slogans
-    //create element containing slogan as innerText
-    //append that element as child to slogan-holder
-//}
+thirdDropdown.addEventListener('change', () => {
+    let thirdValue = thirdDropdown.value;
+    thirdChanges++;
+    let thirdPath = 'url(./assets/' + thirdValue.toLowerCase() + '.png)';
+    thirdImage.src = (thirdPath);
+    displayCountStats();
+    let sloganToAdd = sloganInput.value;
+    sloganArray.push(sloganToAdd);
+    displaySlogans();
+});
+
+
+
+function displayCountStats() {
+    const statsString = makeStatsString(firstChanges, secondChanges, thirdChanges);
+    countsHolder.innerHTML = statsString;
+}
+
+function displaySlogans() {
+    sloganHolder.innerHTML = '';
+    for (let slogan of sloganArray) {
+        let newSlogan = document.createElement('div');
+        newSlogan.innerText = slogan;
+        sloganHolder.appendChild(newSlogan);
+    }
+}
